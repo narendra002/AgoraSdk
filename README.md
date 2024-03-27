@@ -1,79 +1,129 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# AgoraChat Documentation
 
-# Getting Started
+## Introduction
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+AgoraChat is a React Native application designed for instant messaging using the Agora Chat SDK. This documentation provides an overview of the application's architecture, key functionalities, and setup instructions.
 
-## Step 1: Start the Metro Server
+### Prerequisites
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Before proceeding, ensure that you have the following:
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- https://docs.agora.io/en/agora-chat/get-started/get-started-sdk?platform=react-native#prerequisites
+- A valid Agora account.
+- An Agora project for which you have enabled Chat.
+- The App Key for the project.
+- Internet access.
+- Ensure that no firewall is blocking your network communication.
 
-```bash
-# using npm
-npm start
+**For iOS Platform:**
 
-# OR using Yarn
-yarn start
-```
+- macOS 10.15.7 or later
+- Xcode 12.4 or later, including command line tools
+- React Native 0.63.4 or later
+- NodeJs 16 or later, including npm package management tool
+- CocoaPods package management tool
+- Yarn compile and run tool
+- Watchman debugging tool
+- A physical or virtual mobile device running iOS 10.0 or later
 
-## Step 2: Start your Application
+**For Android Platform:**
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- macOS 10.15.7 or later, or Windows 10 or later
+- Android Studio 4.0 or later, including JDK 1.8 or later
+- React Native 0.63.4 or later
+- CocoaPods package management tool (if your operating system is macOS)
+- Powershell 5.1 or later (if your operating system is Windows)
+- NodeJs 16 or later, including npm package management tool
+- Yarn compile and run tool
+- Watchman debugging tool
+- A physical or virtual mobile device running Android 6.0 or later
 
-### For Android
+### Troubleshooting
 
-```bash
-# using npm
-npm run android
+If you encounter issues related to CMake during the setup process, follow these steps to resolve them:
 
-# OR using Yarn
-yarn android
-```
+1. **Download CMake:** Follow the instructions provided in [this Stack Overflow thread](https://stackoverflow.com/questions/71853200/cmake-3-10-2-not-found-in-sdk-path-or-by-cmake-dir-prop).
 
-### For iOS
+## Dependencies
 
-```bash
-# using npm
-npm run ios
+- **React:** ^18.2.0
+- **React Native:** ^0.73.6
+- **React Native Agora Chat:** ^1.2.1
 
-# OR using Yarn
-yarn ios
-```
+## Usage
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Initialization
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+The initialization process involves setting up the Chat SDK with the provided app key. It includes registering listeners for connection events and message reception.
 
-## Step 3: Modifying your App
+#### Functions:
 
-Now that you have successfully run the app, let's modify it.
+- `init()`: Initializes the Chat SDK with the provided app key.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Login
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+The login process authenticates the user with their username and chat token.
 
-## Congratulations! :tada:
+#### Functions:
 
-You've successfully run and modified your React Native App. :partying_face:
+- `login()`: Logs in the user with the provided username and chat token.
 
-### Now what?
+### Logout
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+The logout process terminates the user's session on the chat server.
 
-# Troubleshooting
+#### Functions:
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- `logout()`: Logs out the user from the chat server.
 
-# Learn More
+### Send Message
 
-To learn more about React Native, take a look at the following resources:
+Allows users to send text messages to specific recipients.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+#### Functions:
+
+- `sendmsg()`: Sends a text message to a specified target user.
+
+### Receive Message
+
+Enables users to receive incoming messages.
+
+#### Functions:
+
+- `receiveMessage()`: Sets up a listener to receive incoming messages.
+
+## UI Components
+
+The application's user interface consists of various components for input fields, buttons, and display areas.
+
+### Components:
+
+- **TextInput**: Input fields for username, chat token, target user ID, and message content.
+- **Text**: Display components for titles, buttons, and log area.
+- **ScrollView**: Container for scrolling through input fields and log area.
+
+## Scripts
+
+Scripts for running, testing, and linting the application.
+
+### Commands:
+
+- **android**: Runs the application on Android devices.
+- **ios**: Runs the application on iOS devices.
+- **lint**: Runs ESLint for code linting.
+- **start**: Starts the React Native packager.
+- **test**: Runs Jest for testing.
+
+## Installation
+
+Instructions for installing and running the application.
+
+1. Clone the repository.
+2. Install dependencies using `npm install` or `yarn install`.
+3. Run the application using `npm start` or `yarn start`.
+4. For Android, use `npm run android` or `yarn android`.
+5. For iOS, use `npm run ios` or `yarn ios`.
+
+## Conclusion
+
+By following the provided instructions, users can effectively set up and utilize AgoraChat for instant messaging in their React Native applications.
