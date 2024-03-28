@@ -12,12 +12,14 @@ import {
 import VoiceCall from './Components/Voice';
 import VideoCall from './Components/Video';
 import ChatApp from './ChatApp';
+import LoginScreen from './Screens/LoginScreen';
 
 function App() {
-  const [screen, setScreen] = useState('home');
+  const [screen, setScreen] = useState('');
 
   return (
     <SafeAreaView style={styles.main}>
+      <LoginScreen />
       {screen === 'home' ? <Category setScreen={setScreen} /> : null}
       {screen === 'Voice' ? <VoiceCall setScreen={setScreen} /> : null}
       {screen === 'Video' ? <VideoCall setScreen={setScreen} /> : null}
