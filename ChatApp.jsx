@@ -14,19 +14,17 @@ import {
   ChatMessageChatType,
   ChatMessage,
 } from 'react-native-agora-chat';
+import {agoraConfig} from './utils/constants';
 
 // Defines the App object.
 const ChatApp = ({setScreen}) => {
-  // Defines the variable.
   const title = 'AgoraChatQuickstart';
-  // Replaces <your appKey> with your app key.
-  const appKey = '611123074#1307049';
-  // Replaces <your userId> with your user ID.
+
+  const {appKey, chatTokenTemp} = agoraConfig;
+
   const [username, setUsername] = useState('Narendrac024');
-  // Replaces <your agoraToken> with your Agora token.
-  const [chatToken, setChatToken] = useState(
-    '007eJxTYFA8UXT245RwsViH/EPJ+p0ZHecnbl6QtOtXdmNqrKDMrn8KDGZmFkkWFikWFmbJKSZmiWmWiaYGxolGloZpBpYpJkYmr14wpzUEMjIElNUwMDKwAjEjA4ivwpCamphsYWBioJuabGCha2iYmqprYWaaqmtknphkmGaRaGyZmgwAuRMoUw==',
-  );
+
+  const [chatToken, setChatToken] = useState(chatTokenTemp);
   const [targetId, setTargetId] = useState('');
   const [content, setContent] = useState('');
   const [logText, setWarnText] = useState('Show log area');
@@ -169,6 +167,7 @@ const ChatApp = ({setScreen}) => {
       content,
       ChatMessageChatType.PeerChat,
     );
+
     const callback = new (class {
       onProgress(locaMsgId, progress) {
         rollLog(`send message process: ${locaMsgId}, ${progress}`);
