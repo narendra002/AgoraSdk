@@ -16,7 +16,7 @@ import {
 } from 'react-native-agora-chat';
 
 // Defines the App object.
-const App = () => {
+const ChatApp = ({setScreen}) => {
   // Defines the variable.
   const title = 'AgoraChatQuickstart';
   // Replaces <your appKey> with your app key.
@@ -217,7 +217,9 @@ const App = () => {
   return (
     <SafeAreaView>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{title}</Text>
+        <Text onPress={() => setScreen('home')} style={styles.title}>
+          {'<- ' + `${title}`}
+        </Text>
       </View>
       <ScrollView>
         <View style={styles.inputCon}>
@@ -342,4 +344,4 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 });
-export default App;
+export default ChatApp;
